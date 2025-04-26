@@ -7,15 +7,15 @@ import com.prabirkundu.techexactlyassignment.model.AppListModel
 
 class Repository {
     interface Callback {
-        fun <T> onSuccess(list:  T)
+        fun <T> onSuccess(res:  T)
         fun onSuccess()
         fun onFailure(errorMessage: String)
     }
 
-    suspend fun getAppList(callback: Callback) {
+    suspend fun getAppList(kid_id:String,callback: Callback) {
         val appResponse: MutableLiveData<AppListModel> = MutableLiveData()
         try {
-            val response = Retrofit.api.getAppList("378")
+            val response = Retrofit.api.getAppList(kid_id)
 
             if (response != null) {
                 if (response.isSuccessful) {
