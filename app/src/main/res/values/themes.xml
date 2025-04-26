@@ -3,7 +3,16 @@
     <style name="Base.Theme.TechExactlyAssignment" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/black</item> <!-- App bar background color -->
+        <item name="colorOnPrimary">#FFFFFF</item> <!-- App bar title and icons color -->
     </style>
 
     <style name="Theme.TechExactlyAssignment" parent="Base.Theme.TechExactlyAssignment" />
+
+    <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">15sp</item> <!-- Your desired size -->
+        <item name="fontFamily">@font/roboto_light</item> <!-- Your font -->
+        <item name="textAllCaps">false</item> <!-- Your desired size -->
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>

@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.prabirkundu.techexactlyassignment.Repository.Repository
 import com.prabirkundu.techexactlyassignment.ViewModel.MainViewModel
 import com.prabirkundu.techexactlyassignment.ViewModel.MainViewModelProviderFactory
@@ -20,16 +22,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModel : MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //nableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initView()
     }
 
     private fun initView() {
-
         mTitles!!.add("Applications")
-        mTitles!!.add("Setting")
+        mTitles!!.add("Settings")
 
         // initializing our array list.
 
@@ -43,5 +43,11 @@ class MainActivity : AppCompatActivity() {
         val mainViewModelProviderFactory = MainViewModelProviderFactory(repository);
         viewModel = ViewModelProvider(this,mainViewModelProviderFactory).get(MainViewModel::class.java)
 
+        //tabLayout.setupWithViewPager(mViewPager);
+        TabLayoutMediator(
+            binding.tabLayout, binding.mViewPager2
+        ) { tab: TabLayout.Tab, position: Int ->
+            tab.setText(viewPagerAdapter2.getPageTitle(position)) // Set the title for each tab
+        }.attach()
     }
 }

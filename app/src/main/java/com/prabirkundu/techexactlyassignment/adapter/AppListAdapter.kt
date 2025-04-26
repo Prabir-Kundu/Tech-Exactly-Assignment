@@ -1,11 +1,13 @@
 package com.prabirkundu.techexactlyassignment.adapter
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.ImageView
+import android.widget.Switch
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -35,6 +37,12 @@ class AppListAdapter(
                 .load(appList.get(position).app_icon)
                 .into( findViewById<ImageView>(R.id.icon));
             findViewById<TextView>(R.id.tvAppName).text = appList.get(position).app_name
+            try {
+                context.packageManager.getPackageInfo(appList.get(position).app_package_name, 0)
+                findViewById<Switch>(R.id.switch1).isChecked  = true
+            } catch (e: PackageManager.NameNotFoundException) {
+                findViewById<Switch>(R.id.switch1).isChecked  = false
+            }
         }
     }
 
